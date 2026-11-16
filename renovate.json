@@ -1,0 +1,81 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigestsToSemver",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "configMigration": true,
+  "customManagers": [
+    {
+      "currentValueTemplate": "{{currentValue}}",
+      "customType": "regex",
+      "description": [
+        "Custom dependency manager for updating tool versions defined in the justfile."
+      ],
+      "managerFilePatterns": [
+        "/(^|/)justfile$/"
+      ],
+      "matchStrings": [
+        "(?m)^\\s*#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+versioning=(?<versioning>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\r?\\n\\s*(?<varName>[A-Z0-9_]+)_VERSION\\s*:=\\s*\"(?<currentValue>[^\"@\\s]+)\"\\s*$"
+      ]
+    }
+  ],
+  "enabledManagers": [
+    "custom.regex",
+    "github-actions",
+    "cargo"
+  ],
+  "minimumReleaseAge": "7 days",
+  "osvVulnerabilityAlerts": true,
+  "packageRules": [
+    {
+      "description": [
+        "Group crate dependency updates in a single PR."
+      ],
+      "groupName": "Rust",
+      "groupSlug": "rust",
+      "matchManagers": [
+        "cargo"
+      ]
+    },
+    {
+      "description": [
+        "Group justfile dependency updates in a single PR."
+      ],
+      "groupName": "Justfile",
+      "groupSlug": "justfile",
+      "matchFileNames": [
+        "justfile"
+      ]
+    },
+    {
+      "description": [
+        "Group CI dependency updates in a single PR."
+      ],
+      "groupName": "Github Actions",
+      "groupSlug": "github-actions",
+      "matchManagers": [
+        "github-actions"
+      ]
+    },
+    {
+      "description": [
+        "Always allow vulnerability/security fixes, even when other rules disable specific dependencies."
+      ],
+      "enabled": true,
+      "matchJsonata": [
+        "$exists(vulnerabilityFixVersion) or isVulnerabilityAlert = true"
+      ]
+    }
+  ],
+  "rebaseWhen": "behind-base-branch",
+  "semanticCommits": "enabled",
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "minimumReleaseAge": null,
+    "schedule": [
+      "at any time"
+    ]
+  }
+}

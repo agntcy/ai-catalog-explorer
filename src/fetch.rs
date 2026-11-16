@@ -1,3 +1,6 @@
+// Copyright AGNTCY Contributors (https://github.com/agntcy)
+// SPDX-License-Identifier: Apache-2.0
+
 //! An HTTP fetcher that is safe to run for strangers: it refuses private addresses and
 //! records every request so the page can show the trace.
 

@@ -1,3 +1,6 @@
+// Copyright AGNTCY Contributors (https://github.com/agntcy)
+// SPDX-License-Identifier: Apache-2.0
+
 //! The catalogs the explorer knows about, kept in memory and saved to a JSON file.
 
 use std::collections::BTreeMap;

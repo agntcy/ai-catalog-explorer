@@ -1,3 +1,6 @@
+// Copyright AGNTCY Contributors (https://github.com/agntcy)
+// SPDX-License-Identifier: Apache-2.0
+
 //! Reads an entry's artifact and summarizes it by its media type.
 
 use ai_catalog_discover::Fetcher;
