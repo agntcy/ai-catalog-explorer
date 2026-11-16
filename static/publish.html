@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publish a catalog · AI Catalog Explorer</title>
+<script src="/theme.js"></script>
+<link rel="icon" type="image/png" sizes="112x112" href="/logo.png?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<link rel="apple-touch-icon" href="/logo.png?v=2">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="bar wide">
+    <a class="brand" href="/"><img class="logo" src="/logo.png?v=2" alt="" width="28" height="28">AI Catalog Explorer</a>
+    <nav>
+      <a href="/catalogs">Index</a>
+      <a href="/publish" aria-current="page">Publish</a>
+      <a href="https://ai-catalog.io/" target="_blank" rel="noopener">Specification</a>
+      <a href="https://agent-card.github.io/awesome-ai-catalogs/" target="_blank" rel="noopener">Awesome list</a>
+      <a href="https://github.com/Agent-Card" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <button type="button" class="theme" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main class="wide">
+  <a class="back" href="/"><span aria-hidden="true">←</span> Back to search</a>
+  <h1>Publish your AI Catalog</h1>
+  <p class="lead">An AI Catalog is one JSON file that lists the AI artifacts your domain offers: MCP servers, agents, skills. Write it, serve it, and tools can find it.</p>
+
+  <details open>
+    <summary><h2>1. Write the catalog</h2><span class="count" id="draft-state"></span></summary>
+    <div class="body">
+      <p class="sub">Fill in the details and the file is written for you. It is checked as you type. Nothing is sent anywhere except to this page's own checker.</p>
+      <div class="fields">
+        <label>Your domain<input id="domain" placeholder="example.com" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
+        <label>Your name or organization <span class="meta">(names the publisher, needed for Discoverable)</span><input id="host" placeholder="Acme Corp" autocomplete="off"></label>
+      </div>
+      <p class="panel-title">Entries</p>
+      <ul class="list" id="rows"></ul>
+      <p class="action"><button type="button" class="tool" id="add">+ Add an entry</button></p>
+      <p class="panel-title">catalog file</p>
+      <div class="tools">
+        <button type="button" class="tool" id="copy-catalog">Copy</button>
+        <button type="button" class="tool" id="download">Download ai-catalog.json</button>
+      </div>
+      <pre class="raw" id="catalog"></pre>
+      <ul class="hints" id="issues"></ul>
+    </div>
+  </details>
+
+  <details open>
+    <summary><h2>2. Serve it</h2></summary>
+    <div class="body">
+      <p class="sub">Serve the file at <span class="url">https://<span class="domain">example.com</span>/.well-known/ai-catalog.json</span>. Tools that probe a domain look there first. The preferred media type is <span class="url">application/ai-catalog+json</span>; a plain <span class="url">application/json</span> is accepted too.</p>
+      <p class="panel-title">Where is your site hosted?</p>
+      <div class="tools" id="hosts"></div>
+      <p class="sub" id="serve-note"></p>
+      <div class="tools"><button type="button" class="tool" data-copy="serve-code">Copy</button></div>
+      <pre class="raw" id="serve-code"></pre>
+    </div>
+  </details>
+
+  <details open>
+    <summary><h2>3. Advertise it</h2><span class="count">optional</span></summary>
+    <div class="body">
+      <p class="sub">Your home page can point to the catalog, so a catalog kept anywhere on your site is still found. Use either or both.</p>
+      <p class="panel-title">In your HTML, inside <span class="url">&lt;head&gt;</span></p>
+      <div class="tools"><button type="button" class="tool" data-copy="html-code">Copy</button></div>
+      <pre class="raw" id="html-code"></pre>
+      <p class="panel-title">As an HTTP header on your home page</p>
+      <p class="sub" id="link-note"></p>
+      <div class="tools" id="link-tools"><button type="button" class="tool" data-copy="link-code">Copy</button></div>
+      <pre class="raw" id="link-code"></pre>
+    </div>
+  </details>
+
+  <details open>
+    <summary><h2>4. Check it</h2></summary>
+    <div class="body">
+      <p class="sub">Once it is live, run the explorer on your domain. It shows how the catalog was found and what level it reaches.</p>
+      <p class="action"><a class="go" id="check" href="/">Check your domain</a></p>
+      <p class="panel-title">Or from a terminal</p>
+      <div class="tools"><button type="button" class="tool" data-copy="curl-code">Copy</button></div>
+      <pre class="raw" id="curl-code"></pre>
+      <p class="notice">The Trusted level needs more: signed trust manifests that name who published each entry. See the <a href="https://ai-catalog.io/" target="_blank" rel="noopener">specification</a>.</p>
+    </div>
+  </details>
+</main>
+<footer class="site-footer">
+  <div class="bar wide">
+    <span>AI Catalog Explorer</span>
+  </div>
+</footer>
+<script src="/publish.js"></script>
+</body>
+</html>

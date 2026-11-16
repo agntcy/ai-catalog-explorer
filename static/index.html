@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Catalog Explorer</title>
+<script src="/theme.js"></script>
+<link rel="icon" type="image/png" sizes="112x112" href="/logo.png?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<link rel="apple-touch-icon" href="/logo.png?v=2">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="bar wide">
+    <a class="brand" href="/"><img class="logo" src="/logo.png?v=2" alt="" width="28" height="28">AI Catalog Explorer</a>
+    <nav>
+      <a href="/catalogs">Index</a>
+      <a href="/publish">Publish</a>
+      <a href="https://ai-catalog.io/" target="_blank" rel="noopener">Specification</a>
+      <a href="https://agent-card.github.io/awesome-ai-catalogs/" target="_blank" rel="noopener">Awesome list</a>
+      <a href="https://github.com/Agent-Card" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <button type="button" class="theme" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main class="home wide">
+  <div class="hero">
+    <h1>What does this domain publish for AI?</h1>
+    <p class="lead">Find a domain's AI Catalog, see what it lists, and check whether its signatures hold up.</p>
+  </div>
+  <form action="/discover" method="get">
+    <input name="domain" placeholder="example.com or a catalog URL" autocomplete="off" autocapitalize="off" spellcheck="false" required autofocus>
+    <button>Explore</button>
+  </form>
+
+  <p class="label-row">Try an example</p>
+  <ul class="examples">
+    <li><a href="/discover?domain=agentavow.com"><span class="name">agentavow.com</span><div class="meta">Signed, and verifies end to end</div></a></li>
+    <li><a href="/discover?domain=github.com"><span class="name">github.com</span><div class="meta">A well-known catalog with an MCP server, but no publisher named</div></a></li>
+    <li><a href="/discover?domain=tldraw.dev"><span class="name">tldraw.dev</span><div class="meta">Found by a Link header, with a nested catalog</div></a></li>
+  </ul>
+
+  <p class="publish-cta">Run a site? <a href="/publish">See how to publish your own catalog.</a></p>
+</main>
+<footer class="site-footer">
+  <div class="bar wide">
+    <span>AI Catalog Explorer</span>
+  </div>
+</footer>
+</body>
+</html>

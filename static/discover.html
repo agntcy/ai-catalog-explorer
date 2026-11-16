@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discovery · AI Catalog Explorer</title>
+<script src="/theme.js"></script>
+<link rel="icon" type="image/png" sizes="112x112" href="/logo.png?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<link rel="apple-touch-icon" href="/logo.png?v=2">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="bar wide">
+    <a class="brand" href="/"><img class="logo" src="/logo.png?v=2" alt="" width="28" height="28">AI Catalog Explorer</a>
+    <nav>
+      <a href="/catalogs">Index</a>
+      <a href="/publish">Publish</a>
+      <a href="https://ai-catalog.io/" target="_blank" rel="noopener">Specification</a>
+      <a href="https://agent-card.github.io/awesome-ai-catalogs/" target="_blank" rel="noopener">Awesome list</a>
+      <a href="https://github.com/Agent-Card" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <button type="button" class="theme" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+<main class="wide">
+  <a class="back" href="/"><span aria-hidden="true">←</span> Back to search</a>
+  <h1 id="title">Exploring…</h1>
+  <p class="lead" id="subtitle">Looking for a catalog and checking it. This can take a few seconds.</p>
+
+  <section class="verdict" id="verdict" hidden>
+    <span class="level" id="level"></span>
+    <p class="reason" id="reason"></p>
+    <p class="meaning" id="meaning"></p>
+    <ul class="hints" id="hints"></ul>
+  </section>
+
+  <details id="raw-section" open hidden>
+    <summary><h2>The catalog document</h2><span class="count" id="raw-count"></span></summary>
+    <div class="body">
+      <p class="sub">The catalog as the server sent it. The tree is for reading: open and close parts of it, and see what each signature checked out as. "As served" shows the exact bytes the signatures cover.</p>
+      <div id="raw-viewer"></div>
+    </div>
+  </details>
+
+  <details id="entries-section" open hidden>
+    <summary><h2>What it lists</h2><span class="count" id="entries-count"></span></summary>
+    <div class="body">
+      <p class="sub">Each entry points to one AI artifact: an MCP server, an agent, a skill, an API description or another catalog. Entries with trust information show what was checked.</p>
+      <ul class="list" id="entries"></ul>
+    </div>
+  </details>
+
+  <details id="trace-section" open hidden>
+    <summary><h2>How it was found</h2><span class="count" id="trace-count"></span></summary>
+    <div class="body">
+      <p class="sub">The web requests made while looking for the catalog, in order. The search stops at the first catalog found. A Link header or link element is read from the home page response without another request.</p>
+      <ol class="list" id="trace"></ol>
+    </div>
+  </details>
+
+  <p class="notice" id="notice" hidden>Only the root entries are verified. The explorer has no list of authorized catalog operators, so a catalog signature is checked but never counted as authorized.</p>
+</main>
+<footer class="site-footer">
+  <div class="bar wide">
+    <span>AI Catalog Explorer</span>
+  </div>
+</footer>
+<script src="/discover.js"></script>
+</body>
+</html>
