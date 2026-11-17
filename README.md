@@ -1,5 +1,7 @@
 # AI Catalog Explorer
 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/agntcy/ai-catalog-explorer/badge)](https://securityscorecards.dev/viewer/?uri=github.com/agntcy/ai-catalog-explorer)
+
 A small web app for the [AI Catalog](https://github.com/Agent-Card/ai-catalog) specification, built on the released [Rust SDK](https://github.com/Agent-Card/ai-catalog-rust) crates (`ai-catalog`, `-discover`, `-trust`, `-validate`).
 
 - **Explore** (`/`): enter a domain and see how its catalog is discovered (the `Link` header, the HTML `<link>`, the well-known URI), the requests made, its entries and its conformance level. Signatures, the publisher's `did:web` document and artifact digests are verified, so a catalog can reach **Trusted**. Hints name what stands between a catalog and the next level, such as a missing `host`, entries without a digest, or an identifier whose `urn:air` publisher is not the catalog's domain.
